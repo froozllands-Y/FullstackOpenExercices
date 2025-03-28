@@ -1,0 +1,33 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate server
+    server->>browser: add to database (json file) {content: 'houla ouh', date: '2025-03-28T21:03:00.814Z'}
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    activate server
+    server->>browser: HTML Document
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes/main.css
+    activate server
+    server->>browser: CSS file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes/main.js
+    activate server
+    server->>browser: Javascript file
+    deactivate server
+
+    browser start to execute the javascript code that's going to fetches JSON from the server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes/data.JSON
+    activate server
+    server->>browser: [{content: 'meme', date: '2025-03-28T04:13:24.631Z'},...,{content: 'houla ouh', date: '2025-03-28T21:03:00.814Z'}]
+    deactivate server
+
+    The browser executes the callback function that renders the notes
+
