@@ -7,9 +7,21 @@ sequenceDiagram
     server->>browser: HTML DOCUMENT
     deactivate server
 
-    browser->>server: Request 7
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
     activate server
-    server->>browser: Response 7
+    server->>browser: CSS file
     deactivate server
 
-    
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+    activate server
+    server->>browser: Javascript file
+    deactivate server
+
+    browser start to execute the javascript code that's going to fetches JSON from the server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server->>browser: [{content: 'meme', date: '2025-03-28T04:13:24.631Z'},...]
+    deactivate server
+
+   
