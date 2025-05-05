@@ -1,9 +1,8 @@
 import { useState } from 'react'
 const Header=()=><div><h1>Give Feedback</h1></div>
 const Button=({name,onClick})=><button onClick={onClick}>{name}</button>
-const StatisticsLine=({text,value})=><div>{text}: {value}</div>
 const Statistics=({good,neutral,bad})=>{
-  
+
   const total=good+neutral+bad
   const average=(good-bad)/(total)
   const positive=good*100/total
@@ -18,12 +17,16 @@ const Statistics=({good,neutral,bad})=>{
   return(
     <div>
       <h1>Statistics</h1>
-      <StatisticsLine text='Good' value={good} />
-      <StatisticsLine text='Neutral' value={neutral} />
-      <StatisticsLine text='Bad' value={bad} />
-      All: {total}
-      <br/>Average: {average}
-      <br/>Positive: {positive}
+      
+      <table>
+        <tr> <td>Good </td>      <td>{good}</td>       </tr>
+        <tr> <td>Neutral </td>   <td>{neutral}</td>    </tr>
+        <tr> <td>Bad </td>       <td>{bad}</td>        </tr>
+        <tr> <td>All </td>       <td>{total}</td>      </tr>
+        <tr> <td>Average </td>   <td>{average}</td>    </tr>
+        <tr> <td>Positive </td>  <td>{positive} %</td> </tr>
+      </table>
+      
     </div>
   )
 }
