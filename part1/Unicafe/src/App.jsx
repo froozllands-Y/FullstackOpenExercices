@@ -1,6 +1,7 @@
 import { useState } from 'react'
 const Header=()=><div><h1>Give Feedback</h1></div>
 const Button=({name,onClick})=><button onClick={onClick}>{name}</button>
+const StatisticsLine=({text,value})=><div>{text}: {value}</div>
 const Statistics=({good,neutral,bad})=>{
   
   const total=good+neutral+bad
@@ -14,14 +15,13 @@ const Statistics=({good,neutral,bad})=>{
       No feedback given
     </div>)
   }
-  
   return(
     <div>
       <h1>Statistics</h1>
-      <br/>Good: {good}
-      <br/>Neutral: {neutral}
-      <br/>Bad: {bad}
-      <br/>All: {total}
+      <StatisticsLine text='Good' value={good} />
+      <StatisticsLine text='Neutral' value={neutral} />
+      <StatisticsLine text='Bad' value={bad} />
+      All: {total}
       <br/>Average: {average}
       <br/>Positive: {positive}
     </div>
